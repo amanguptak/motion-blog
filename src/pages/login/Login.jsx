@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -15,7 +15,7 @@ const schema = z.object({
 });
 
 export default function Login() {
-  const [flag, setFlag] = useState(false);
+
   const { dispatch, isFetching } = useContext(Context);
   const navigate = useNavigate();
 
@@ -32,8 +32,9 @@ export default function Login() {
       navigate('/');  // Redirect to home on successful login
     } catch (err) {
       dispatch({ type: 'LOGIN_FAILURE' });
+      console.error(err);
       toast.error(`Login failed: ${err.response?.data?.message || 'Unknown error'}`);
-      setFlag(true);
+   
     }
   };
 
@@ -62,7 +63,7 @@ export default function Login() {
           {errors.password && <span className="errorMessage">{errors.password.message}</span>}
           
           <button className="loginBtn" type="submit" disabled={isFetching}>Login</button>
-          {flag && <span className="errorMessage">Invalid Data</span>}
+       
         </form>
         
         <Link to='/register' className="registerLink">Register</Link>

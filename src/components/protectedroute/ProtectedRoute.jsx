@@ -9,7 +9,7 @@ function useUser() {
 
 function ProtectedRoute({ children }) {
   const user = useUser();
-  return user ? children : <Navigate to="/register" />;
+  return user ? children : <Navigate to="/login" />;
 }
 
 // Define propTypes for ProtectedRoute

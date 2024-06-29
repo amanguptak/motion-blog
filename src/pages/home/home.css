@@ -1,25 +1,40 @@
 /* home.css */
 
 .home {
-  
-    gap: 20px;
-    padding: 20px;
-    max-width: 1200px;
-    margin: 0 auto;
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.loadingSpinner {
+  font-size: 2rem;
+  color: #21476b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
-  
-  .loadingSpinner {
-    font-size: 2rem;
-    color: #21476b;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  
-  /* @media (max-width: 768px) {
-    .home {
-      grid-template-columns: 1fr;
-    }
+}
+
+/* Uncomment this section if you want to change the grid layout for smaller screens */
+
+@media (max-width: 768px) {
+  .home {
+    grid-template-columns: 1fr;
   }
-   */
+}
+

@@ -13,6 +13,7 @@ import Settings from './pages/settings/Setting';
 import Single from './pages/single/Single';
 import Write from './pages/write/Write';
 import About from './pages/about/About';
+import Contact from './pages/contact/Contact';
 import { ContextProvider } from './context/Context';
 import ProtectedRoute from './components/protectedroute/ProtectedRoute'; // Correct import of ProtectedRoute
 
@@ -61,6 +62,14 @@ const router = createBrowserRouter([
          
         ),
       },
+      {
+        path: 'contact',
+        element: (
+        
+            <Contact />
+         
+        ),
+      }
     ],
   },
 ]);

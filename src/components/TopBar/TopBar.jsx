@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Context } from '../../context/Context';
 import { FaFacebook, FaTwitter, FaInstagram, FaDiscord } from 'react-icons/fa';
 import './topbar.css';
@@ -14,13 +14,14 @@ const socialIcons = [
 const navLinks = [
   { path: "/", label: "Home" },
   { path: "/about", label: "About" },
-  { path: "/", label: "Contact" },
+  { path: "/contact", label: "Contact" },
   { path: "/write", label: "Write" }
 ];
 
 export default function TopBar() {
   const { user, dispatch } = useContext(Context);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const handleLogout = () => {
     dispatch({ type: 'LOGOUT' });
@@ -28,6 +29,11 @@ export default function TopBar() {
   };
 
   const PF = 'http://localhost:5000/images/';
+
+  // Check if the current path is login or register
+  if (location.pathname === '/login' || location.pathname === '/register') {
+    return null; // Do not render the TopBar on login or register pages
+  }
 
   return (
     <div className="top">
@@ -46,7 +52,7 @@ export default function TopBar() {
           ))}
           {user && (
             <li className="topListItem">
-              <Link to="/" className="link" onClick={handleLogout}>LogOut</Link>
+              <button className="link" onClick={handleLogout}>LogOut</button>
             </li>
           )}
         </ul>
