@@ -22,7 +22,7 @@ export default function Contact() {
 
   const [loading, setLoading] = useState(false);
 
-  
+  const emailLink = 'https://formspree.io/f/xrgnwlok';
 
   const onSubmit = async (data) => {
     setLoading(true);

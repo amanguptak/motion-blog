@@ -1,18 +1,10 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+
+
 import { FaFacebook, FaTwitter, FaInstagram, FaDiscord, FaUserCircle } from 'react-icons/fa';
 import "./about.css";
 
 export default function About() {
-  const [cats, setCats] = useState([]);
-
-  useEffect(() => {
-    const getCats = async () => {
-      const res = await axios.get("http://localhost:5000/api/cat");
-      setCats(res.data);
-    };
-    getCats();
-  }, []);
+  
 
   return (
     <div className="about">
@@ -30,14 +22,7 @@ export default function About() {
           Aman Gupta, the founder of AmBlog, is passionate about exploring new places, learning new things, and sharing his experiences. Through this blog, he aims to connect with like-minded individuals and build a community of curious and motivated readers.
         </p>
       </div>
-      <div className="aboutItem">
-        <h2 className="aboutSubtitle">Categories</h2>
-        <ul className="aboutList">
-          {cats.map((c) => (
-            <li key={c._id} className="aboutListItem">{c.name}</li>
-          ))}
-        </ul>
-      </div>
+     
       <div className="aboutItem">
         <h2 className="aboutSubtitle">Follow Us</h2>
         <div className="aboutSocial">

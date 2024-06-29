@@ -67,9 +67,25 @@
     color: #ffd54f; /* Hover effect for list items */
   }
   
-  .topListItem .link {
+ 
+
+  .user-options{
+    display: flex;
+    align-items: center;
+   gap: 10px;
+  }
+
+  .user-options .link{
     text-decoration: none;
-    color: inherit;
+    color:#21476b ;
+    background-color:#ffd54f ;
+    padding: 10px 20px;
+    border-radius: 20px;
+     font-weight: bold;
+  }
+  .user-options .link:hover{
+    color:#ffd54f  ;
+    background-color:#21476b ;
   }
   
   .topImg {

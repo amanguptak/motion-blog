@@ -50,18 +50,17 @@ export default function TopBar() {
               <Link to={link.path} className="link">{link.label}</Link>
             </li>
           ))}
-          {user && (
-            <li className="topListItem">
-              <button className="link" onClick={handleLogout}>LogOut</button>
-            </li>
-          )}
+          
         </ul>
       </div>
       <div className="topRight">
         {user ? (
+          <div className='user-options'>
           <Link to="/settings">
             <img src={PF + user.profilePic} alt="" className="topImg" />
           </Link>
+             <button className="link" onClick={handleLogout}>LogOut</button>
+          </div>
         ) : (
           <ul className="toplist">
             <li className="topListItem">
