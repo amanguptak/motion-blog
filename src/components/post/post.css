@@ -1,0 +1,156 @@
+/* post.css */
+
+.post {
+  background-color: #21476b;
+  color: #ffdb70;
+  cursor: pointer;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.post:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.postImg {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.postInfo {
+  padding: 0;
+}
+
+.postCats {
+  display: flex;
+  gap: 10px;
+}
+
+.postCat {
+  font-size: 0.875rem;
+  color: #ffdb70;
+}
+
+.link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.postTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffdb70;
+  margin: 10px 0;
+}
+
+.postDate {
+  font-size: 0.9rem;
+  color: #ffdb70;
+  margin-bottom: 10px;
+}
+
+.postDescWrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.postDesc {
+  font-size: 1rem;
+  color: #ffdb70;
+  margin-bottom: 20px;
+  display: -webkit-box;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.readMore {
+  align-self: flex-end;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #ffdb70;
+  text-decoration: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.readMore:hover {
+  color: #ffffff;
+}
+
+.postActions {
+  display: flex;
+  gap: 10px;
+}
+
+.postEdit,
+.postDelete {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.postEdit {
+  background-color: #ffdb70;
+  color: #21476b;
+}
+
+.postEdit:hover {
+  background-color: #21476b;
+  color: #ffdb70;
+}
+
+.postDelete {
+  background-color: #21476b;
+  color: #ffdb70;
+}
+
+.postDelete:hover {
+  background-color: #ffdb70;
+  color: #21476b;
+}
+
+@media (max-width: 768px) {
+  .post {
+    padding: 15px;
+  }
+
+  .postTitle {
+    font-size: 1.2rem;
+  }
+
+  .postDesc {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .post {
+    padding: 10px;
+  }
+
+  .postTitle {
+    font-size: 1rem;
+  }
+
+  .postDesc {
+    font-size: 0.8rem;
+  }
+}

@@ -1,0 +1,25 @@
+/* home.css */
+
+.home {
+  
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .loadingSpinner {
+    font-size: 2rem;
+    color: #21476b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  /* @media (max-width: 768px) {
+    .home {
+      grid-template-columns: 1fr;
+    }
+  }
+   */

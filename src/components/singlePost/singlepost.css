@@ -1,0 +1,154 @@
+/* singlepost.css */
+
+.singlePost {
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.singlePostWrapper {
+  background-color: #21476b;
+  color: #ffdb70;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.singlePostWrapper:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.singlePostImg {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  object-fit: cover;
+}
+
+.singlePostTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffdb70;
+  margin: 10px 0;
+  position: relative;
+}
+
+.singlePostTitleInput {
+  width: 100%;
+  padding: 10px;
+  font-size: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  color: #21476b;
+}
+
+.singlePostEdit {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  gap: 10px;
+}
+
+.singlePostIcon {
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #ffdb70;
+}
+
+.singlePostInfo {
+  display: flex;
+  justify-content: space-between;
+  color: #999;
+  margin-bottom: 20px;
+}
+
+.singlePostAuthor .link {
+  color: #ffdb70;
+  text-decoration: none;
+}
+
+.singlePostAuthor .link:hover {
+  text-decoration: underline;
+}
+
+.singlePostDate {
+  font-size: 0.9rem;
+}
+
+.singlePostDescInput {
+  width: 100%;
+  font-size: 1rem;
+  border: 1px solid #ffdb70;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  min-height: 200px;
+  color: #ffdb70;
+}
+
+.singlePostDesc {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #ffdb70;
+  margin-bottom: 20px;
+}
+
+.singlePostButton {
+  width: 50%;
+  padding: 10px;
+  background-color: #ffdb70;
+  color: #21476b;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.singlePostButton:hover {
+  background-color: #21476b;
+  color: #ffdb70;
+  transform: translateY(-2px);
+}
+
+.errorMessage {
+  color: red;
+  margin-top: 5px;
+}
+
+@media (max-width: 768px) {
+  .singlePostWrapper {
+    padding: 10px;
+  }
+
+  .singlePostTitle,
+  .singlePostTitleInput {
+    font-size: 1.5rem;
+  }
+
+  .singlePostDescInput {
+    min-height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .singlePostWrapper {
+    padding: 5px;
+  }
+
+  .singlePostTitle,
+  .singlePostTitleInput {
+    font-size: 1.2rem;
+  }
+
+  .singlePostDescInput {
+    min-height: 100px;
+  }
+}

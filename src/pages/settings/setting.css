@@ -1,0 +1,153 @@
+/* setting.css */
+
+.settings {
+  display: flex;
+  padding: 20px;
+  background-color: #21476b;
+  color: #ffdb70;
+}
+
+.settingsWrapper {
+  flex: 9;
+  padding: 20px;
+  background-color: #21476b;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  margin-right: 20px;
+}
+
+.settingsTitle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.settingsUpdateTitle {
+  font-size: 30px;
+  color: #ffdb70;
+}
+
+.settingsDeleteTitle {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 16px;
+  color: #ffdb70;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.settingsForm {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.settingsPP {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.settingsPPImg {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.settingsPPIcon {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: #ffdb70;
+  color: #21476b;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.settingLabel {
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.settingsInput {
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  max-width: 700px; /* Reduced width */
+}
+
+.settingsSubmitButton {
+  align-self: center;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #ffdb70;
+  color: #21476b;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.settingsSubmitButton:hover {
+  background-color: #21476b;
+  color: #ffdb70;
+  transform: translateY(-2px);
+}
+
+.errorMessage {
+  color: red;
+  margin-top: -10px;
+  margin-bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  .settingsWrapper {
+    margin-right: 0;
+  }
+
+  .settingsUpdateTitle {
+    font-size: 24px;
+  }
+
+  .settingsDeleteTitle {
+    font-size: 14px;
+  }
+
+  .settingsInput {
+    font-size: 14px;
+  }
+
+  .settingsSubmitButton {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .settingsWrapper {
+    padding: 10px;
+  }
+
+  .settingsUpdateTitle {
+    font-size: 20px;
+  }
+
+  .settingsDeleteTitle {
+    font-size: 12px;
+  }
+
+  .settingsInput {
+    font-size: 12px;
+  }
+
+  .settingsSubmitButton {
+    font-size: 12px;
+  }
+}

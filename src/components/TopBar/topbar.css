@@ -1,0 +1,115 @@
+/* topbar.css */
+
+.top {
+    width: 100%;
+    height: 60px;
+    background-color: #21476b;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    padding: 0 20px;
+  }
+  
+  .topLeft,
+  .topCenter,
+  .topRight {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .topLeft {
+    justify-content: flex-start;
+  }
+  
+  .topCenter {
+    justify-content: center;
+  }
+  
+  .topRight {
+    justify-content: flex-end;
+  }
+  
+  .topIcon {
+    font-size: 24px;
+    margin-right: 15px;
+    cursor: pointer;
+    color: #ffdb70; /* Updated icon color */
+    transition: color 0.3s;
+  }
+  
+  .topIcon:hover {
+    color: #ffd54f; /* Hover effect for icons */
+  }
+  
+  .toplist {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .topListItem {
+    margin-right: 20px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    color: #ffdb70; /* Updated text color */
+    transition: color 0.3s;
+  }
+  
+  .topListItem:hover {
+    color: #ffd54f; /* Hover effect for list items */
+  }
+  
+  .topListItem .link {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .topImg {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ffdb70; /* Updated border color for profile image */
+    transition: border-color 0.3s;
+  }
+  
+  .topImg:hover {
+    border-color: #ffd54f; /* Hover effect for profile image */
+  }
+  
+  .link {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  @media (max-width: 768px) {
+    .top {
+      flex-direction: column;
+      height: auto;
+      padding: 10px;
+    }
+  
+    .topLeft,
+    .topCenter,
+    .topRight {
+      justify-content: center;
+      margin-bottom: 10px;
+    }
+  
+    .topListItem {
+      margin-right: 10px;
+    }
+  
+    .topIcon {
+      margin-right: 10px;
+    }
+  }
+  
