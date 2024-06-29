@@ -5,7 +5,7 @@ export default function Header() {
     <div className="header">
       <div className="headerContainer">
         <div className="headerTitle">
-          <span className="title">AmBlog</span>
+          <span className="title">AmanBlog</span>
           <span className="slogan">Your daily dose of amazing stories</span>
         </div>
         <img 

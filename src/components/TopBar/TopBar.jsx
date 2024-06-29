@@ -1,15 +1,15 @@
 import { useContext } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Context } from '../../context/Context';
-import { FaFacebook, FaTwitter, FaInstagram, FaDiscord } from 'react-icons/fa';
+// import { FaFacebook, FaTwitter, FaInstagram, FaDiscord } from 'react-icons/fa';
 import './topbar.css';
 
-const socialIcons = [
-  { component: FaFacebook, className: "topIcon" },
-  { component: FaTwitter, className: "topIcon" },
-  { component: FaInstagram, className: "topIcon" },
-  { component: FaDiscord, className: "topIcon" }
-];
+// const socialIcons = [
+//   { component: FaFacebook, className: "topIcon" },
+//   { component: FaTwitter, className: "topIcon" },
+//   { component: FaInstagram, className: "topIcon" },
+//   { component: FaDiscord, className: "topIcon" }
+// ];
 
 const navLinks = [
   { path: "/", label: "Home" },
@@ -38,10 +38,7 @@ export default function TopBar() {
   return (
     <div className="top">
       <div className="topLeft">
-        {socialIcons.map((icon, index) => {
-          const IconComponent = icon.component;
-          return <IconComponent className={icon.className} key={index} />;
-        })}
+       <h3><Link to="/">motionBlog</Link></h3>
       </div>
       <div className="topCenter">
         <ul className="toplist">
