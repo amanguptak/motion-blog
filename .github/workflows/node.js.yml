@@ -15,7 +15,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x ,20.x]
+        node-version: [18.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
@@ -30,6 +30,6 @@ jobs:
       run: npm run build
 
     - name: Deploy to Nginx
-      run: npm run deploy
+      run: sudo cp -r dist/* /var/www/html/
     
         
