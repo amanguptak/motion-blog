@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { FaFacebook, FaTwitter, FaInstagram, FaDiscord, FaUserCircle } from 'react-icons/fa';
+import {  FaTwitter, FaInstagram, FaDiscord, FaUserCircle } from 'react-icons/fa';
 import "./categories.css";
 
 export default function Categories() {
@@ -18,7 +18,7 @@ export default function Categories() {
   return (
     <div className="categories">
       <div className="intro">
-        <h2 className="title">Welcome to Our Blog</h2>
+        <h2 className="catTitle">Welcome to Our Blog</h2>
         <p className="description">Discover amazing content on various topics. Explore categories, follow us, and stay updated!</p>
       </div>
 
@@ -36,11 +36,12 @@ export default function Categories() {
       <div className="socialMedia">
         <h3 className="sectionTitle">Follow Us</h3>
         <div className="socialIcons">
-          <FaFacebook className="icon" />
+         
           <FaTwitter className="icon" />
           <FaInstagram className="icon" />
           <FaDiscord className="icon" />
-          <FaUserCircle className="icon" />
+       
+          <Link to="https://amangupta.site"><FaUserCircle className="icon" /></Link>
         </div>
       </div>
     </div>

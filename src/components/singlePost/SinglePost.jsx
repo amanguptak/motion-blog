@@ -6,7 +6,7 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Context } from '../../context/Context';
 import { toast, ToastContainer } from 'react-toastify';
-import { FaEdit, FaTrash } from 'react-icons/fa';
+import { FaEdit, FaTrash, FaFileImage } from 'react-icons/fa';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import 'react-toastify/dist/ReactToastify.css';
@@ -22,7 +22,8 @@ export default function SinglePost() {
   const [post, setPost] = useState({});
   const { user } = useContext(Context);
   const [updateMode, setUpdateMode] = useState(false);
-const PF = `${import.meta.env.VITE_API_URL}/api/images/`
+  const [file, setFile] = useState(null);
+  const PF = `${import.meta.env.VITE_API_URL}/api/images/`;
 
   const { register, handleSubmit, setValue, formState: { errors } } = useForm({
     resolver: zodResolver(schema),
@@ -58,15 +59,35 @@ const PF = `${import.meta.env.VITE_API_URL}/api/images/`
 
   const handleUpdate = async (data) => {
     try {
-      await axios.put(`/api/posts/${postId}`, {
+      let updatedData = {
         username: user.username,
         title: data.title,
         desc: data.desc,
-      });
+      };
+
+      if (file) {
+        const formData = new FormData();
+        const filename = Date.now() + file.name;
+        formData.append("name", filename);
+        formData.append("file", file);
+        updatedData.photo = filename;
+
+        await axios.post("/api/upload", formData);
+      }
+
+      await axios.put(`/api/posts/${postId}`, updatedData);
       setUpdateMode(false);
       toast.success("Post updated successfully");
+      setPost({ ...post, ...updatedData }); // Update the post state with new data
     } catch (err) {
       toast.error("Failed to update post");
+    }
+  };
+
+  const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0];
+    if (selectedFile) {
+      setFile(selectedFile);
     }
   };
 
@@ -74,8 +95,14 @@ const PF = `${import.meta.env.VITE_API_URL}/api/images/`
     <div className="singlePost">
       <ToastContainer />
       <div className="singlePostWrapper">
-        {post.photo && (
+        {post.photo && !file && (
           <img src={PF + post.photo} alt={post.title} className="singlePostImg" />
+        )}
+        {file && (
+          <div className="singlePostImgPreviewContainer">
+            <img src={URL.createObjectURL(file)} alt="Image Preview" className="singlePostImgPreview" />
+            <span className="singlePostImgName">{file.name}</span>
+          </div>
         )}
         {updateMode ? (
           <form onSubmit={handleSubmit(handleUpdate)} className="singlePostForm">
@@ -93,6 +120,17 @@ const PF = `${import.meta.env.VITE_API_URL}/api/images/`
               className="singlePostDescInput"
             />
             {errors.desc && <span className="errorMessage">{errors.desc.message}</span>}
+            <label htmlFor="fileInput" className="fileInputLabel">
+              <FaFileImage className="fileInputIcon" />
+              <input 
+                type="file" 
+                id="fileInput"
+                className="singlePostFileInput"
+                onChange={handleFileChange}
+                style={{ display: 'none' }}
+              />
+              {file && <span className="fileName">{file.name}</span>}
+            </label>
             <button type="submit" className="singlePostButton">Update</button>
           </form>
         ) : (

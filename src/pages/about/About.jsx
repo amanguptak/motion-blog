@@ -1,7 +1,8 @@
 
 
-import { FaFacebook, FaTwitter, FaInstagram, FaDiscord, FaUserCircle } from 'react-icons/fa';
+import { FaTwitter, FaInstagram, FaDiscord, FaUserCircle } from 'react-icons/fa';
 import "./about.css";
+import { Link } from 'react-router-dom';
 
 export default function About() {
   
@@ -26,11 +27,11 @@ export default function About() {
       <div className="aboutItem">
         <h2 className="aboutSubtitle">Follow Us</h2>
         <div className="aboutSocial">
-          <FaFacebook className="aboutIcon" />
+        
           <FaTwitter className="aboutIcon" />
           <FaInstagram className="aboutIcon" />
           <FaDiscord className="aboutIcon" />
-          <FaUserCircle className="aboutIcon" />
+          <Link to="https://amangupta.site"><FaUserCircle className="icon" /></Link>
         </div>
       </div>
     </div>

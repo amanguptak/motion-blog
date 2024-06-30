@@ -20,13 +20,26 @@
   margin-bottom: 20px;
 }
 
-.title {
-  font-size: 1.8rem;
+.catTitle {
+  font-family: 'Raleway', sans-serif;
+  font-size: 2rem;
   font-weight: 700;
   color: #ffdb70;
-  margin-bottom: 10px;
+  
+  background: linear-gradient(90deg, rgba(255,219,112,1) 0%, rgba(255,165,0,1) 100%);
+  -webkit-background-clip: text;
+  cursor: pointer;
+  -webkit-text-fill-color: transparent;
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
+.catTitle:hover{
+  transform: scale(1.1);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+}
 .description {
   font-size: 1rem;
   color: #ffdb70;
@@ -104,7 +117,7 @@
     max-width: 100%;
   }
 
-  .title {
+  .catTitle {
     font-size: 1.5rem;
   }
 
@@ -130,7 +143,7 @@
     padding: 10px;
   }
 
-  .title {
+  .catTitle {
     font-size: 1.2rem;
   }
 
