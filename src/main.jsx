@@ -16,6 +16,8 @@ import About from './pages/about/About';
 import Contact from './pages/contact/Contact';
 import { ContextProvider } from './context/Context';
 import ProtectedRoute from './components/protectedroute/ProtectedRoute'; // Correct import of ProtectedRoute
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const router = createBrowserRouter([
   {
@@ -56,19 +58,11 @@ const router = createBrowserRouter([
       },
       {
         path: 'about',
-        element: (
-        
-            <About />
-         
-        ),
+        element: <About />,
       },
       {
         path: 'contact',
-        element: (
-        
-            <Contact />
-         
-        ),
+        element: <Contact />,
       }
     ],
   },
@@ -78,6 +72,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ContextProvider>
       <RouterProvider router={router} />
+      <ToastContainer />
     </ContextProvider>
   </React.StrictMode>,
 );

@@ -6,6 +6,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import "./register.css";
+import SideImg from '../../components/side-img/Sideimg';
+import registerImg from "/register.png"
 
 const schema = z.object({
   username: z.string().min(1, 'Username is required'),
@@ -34,26 +36,33 @@ export default function Register() {
   return (
     <div className="register">
       <ToastContainer />
-      <span className="registerTitle">Register</span>
-      <form className="registerForm" onSubmit={handleSubmit(onSubmit)}>
-        <label>Username</label>
-        <input className="registerInput" type="text" placeholder="Enter your username..."
-          {...register('username')} />
-        {errors.username && <span className="errorMessage">{errors.username.message}</span>}
-        
-        <label>Email</label>
-        <input className="registerInput" type="text" placeholder="Enter your email..."
-          {...register('email')} />
-        {errors.email && <span className="errorMessage">{errors.email.message}</span>}
-        
-        <label>Password</label>
-        <input className="registerInput" type="password" placeholder="Enter your password..."
-          {...register('password')} />
-        {errors.password && <span className="errorMessage">{errors.password.message}</span>}
-        
-        <button className="registerButton" type="submit">Register</button>
-      </form>
-      <button className="loginButton"><Link to='/login' className="link">Login</Link></button>
+      <div className="registerContainer">
+        <div className="sideImage">
+          <SideImg image={registerImg} />
+        </div>
+        <div className="registerFormContainer">
+          <span className="registerTitle">Register</span>
+          <form className="registerForm" onSubmit={handleSubmit(onSubmit)}>
+            <label>Username</label>
+            <input className="registerInput" type="text" placeholder="Enter your username..."
+              {...register('username')} />
+            {errors.username && <span className="errorMessage">{errors.username.message}</span>}
+            
+            <label>Email</label>
+            <input className="registerInput" type="text" placeholder="Enter your email..."
+              {...register('email')} />
+            {errors.email && <span className="errorMessage">{errors.email.message}</span>}
+            
+            <label>Password</label>
+            <input className="registerInput" type="password" placeholder="Enter your password..."
+              {...register('password')} />
+            {errors.password && <span className="errorMessage">{errors.password.message}</span>}
+            
+            <button className="registerButton" type="submit">Register</button>
+          </form>
+          <button className="loginButton"><Link to='/login' className="link">Login</Link></button>
+        </div>
+      </div>
     </div>
   );
 }

@@ -1,19 +1,44 @@
-/* register.css */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 
+    'Ubuntu',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
 .register {
   display: flex;
-
-  height: 100vh;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px;
-  background-color: #21476b;
+  height: 100vh;
+  background: linear-gradient(135deg, #21476b 0%, #4b7194 100%);
+}
+
+.registerContainer {
+  display: flex;
+  flex-direction: row; /* Changed to row to place image and form side by side */
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background: #21476b;
+  width: 100%;
+  max-width: 1000px;
   color: #ffdb70;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  max-width: 400px;
-  margin: 0px auto;
+}
+
+.sideImage {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.registerFormContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .registerTitle {
@@ -89,10 +114,30 @@
   margin-bottom: 10px;
 }
 
+.side-img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.side-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
 @media (max-width: 768px) {
-  .register {
-    padding: 15px;
-    max-width: 90%;
+  .registerContainer {
+    flex-direction: column;
+    padding: 30px;
+    max-width: 100%;
   }
 
   .registerTitle {
@@ -106,11 +151,16 @@
   .registerButton, .loginButton {
     font-size: 0.9rem;
   }
+
+  .sideImage {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
 }
 
 @media (max-width: 480px) {
-  .register {
-    padding: 10px;
+  .registerContainer {
+    padding: 20px;
   }
 
   .registerTitle {

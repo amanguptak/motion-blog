@@ -11,6 +11,7 @@ function App() {
     <TopBar />
     
       <Outlet context={{ user }} />
+   
     </div>
   );
 }

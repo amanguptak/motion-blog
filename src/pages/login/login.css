@@ -1,9 +1,7 @@
-/* login.css */
-
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, 
+  'Ubuntu',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -19,16 +17,28 @@ body {
 
 .loginContainer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row; /* Changed to row to place image and form side by side */
   align-items: center;
+  justify-content: center;
   padding: 40px;
   background: #21476b;
-  width: 40%;
-
+  width: 100%;
+  max-width: 1000px;
   color: #ffdb70;
-
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.sideImage {
+  flex: 1;
+  margin-right: 20px;
+}
+
+.loginFormContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .loginTitle {
@@ -90,39 +100,64 @@ body {
   margin-bottom: 10px;
 }
 
+.side-img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.side-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
 @media (max-width: 768px) {
   .loginContainer {
-      padding: 30px;
-      max-width: 100%;
+    flex-direction: column;
+    padding: 30px;
+    max-width: 100%;
   }
 
   .loginTitle {
-      font-size: 1.5rem;
+    font-size: 1.5rem;
   }
 
   .loginInput {
-      font-size: 0.9rem;
+    font-size: 0.9rem;
   }
 
   .loginBtn {
-      font-size: 0.9rem;
+    font-size: 0.9rem;
+  }
+
+  .sideImage {
+    margin-right: 0;
+    margin-bottom: 20px;
   }
 }
 
 @media (max-width: 480px) {
   .loginContainer {
-      padding: 20px;
+    padding: 20px;
   }
 
   .loginTitle {
-      font-size: 1.2rem;
+    font-size: 1.2rem;
   }
 
   .loginInput {
-      font-size: 0.8rem;
+    font-size: 0.8rem;
   }
 
   .loginBtn {
-      font-size: 0.8rem;
+    font-size: 0.8rem;
   }
 }

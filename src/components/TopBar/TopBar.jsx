@@ -65,7 +65,9 @@ export default function TopBar() {
       <div className="burgerIcon" onClick={() => setIsOpen(!isOpen)}>
         {isOpen ? <FaTimes /> : <FaBars />}
       </div>
+    
       <div className={`sidebar ${isOpen ? 'open' : ''}`}>
+       
         <ul className="sidebarList">
           {navLinks.map((link, index) => (
             <li className="sidebarListItem" key={index}>
