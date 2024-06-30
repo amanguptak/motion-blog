@@ -25,7 +25,7 @@ export default function Write() {
       username: user.username,
       title,
       desc: des,
-      categories: categories.split(",").map(cat => cat.trim()), // Split and trim categories input
+      categories: categories?.split(",")?.map(cat => cat.trim()), // Split and trim categories input
     };
 
     if (file) {

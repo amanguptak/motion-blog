@@ -25,7 +25,7 @@ export default function Categories() {
       <div className="categoriesListContainer">
         <h3 className="sectionTitle">Categories</h3>
         <ul className="categoriesList">
-          {cats.map((c) => (
+          {cats?.map((c) => (
             <Link to={`/?cat=${c?.name}`} key={c._id} className="link">
               <li className="categoriesListItem">{c.name}</li>
             </Link>
