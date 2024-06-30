@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { motion } from 'framer-motion'; // Import motion from Framer Motion
+import { motion } from 'framer-motion'; 
 import Post from "../post/Post";
 import "./posts.css";
 

@@ -1,6 +1,6 @@
-/* home.css */
-
 .home {
+  display: grid;
+  grid-template-columns: 1fr 300px; /* Adjust the sidebar width as needed */
   gap: 20px;
   padding: 20px;
   max-width: 1200px;
@@ -30,11 +30,8 @@
   }
 }
 
-/* Uncomment this section if you want to change the grid layout for smaller screens */
-
 @media (max-width: 768px) {
   .home {
     grid-template-columns: 1fr;
   }
 }
-

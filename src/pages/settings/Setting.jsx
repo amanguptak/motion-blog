@@ -1,5 +1,5 @@
 import "./setting.css";
-import Sidebar from "../../components/sidebar/Sidebar";
+import Sidebar from "../../components/sidebar/Categories";
 import { useContext, useState, useEffect } from "react";
 import { Context } from "../../context/Context";
 import axios from "axios";
@@ -20,7 +20,7 @@ const schema = z.object({
 export default function Settings() {
   const [file, setFile] = useState(null);
   const { user, dispatch } = useContext(Context);
-  const PF = "http://localhost:5000/images/";
+const PF = `${import.meta.env.VITE_API_URL}/api/images/`
   const navigate = useNavigate();
 
   const { register, handleSubmit, setValue, formState: { errors } } = useForm({
@@ -47,13 +47,13 @@ export default function Settings() {
       formData.append("file", file);
       updatedUser.profilePic = filename;
       try {
-        await axios.post("http://localhost:5000/api/upload", formData);
+        await axios.post("/api/upload", formData);
       } catch (err) {
         toast.error("Failed to upload image");
       }
     }
     try {
-      const res = await axios.put("http://localhost:5000/api/users/" + user._id, updatedUser);
+      const res = await axios.put("/api/users/" + user._id, updatedUser);
       dispatch({ type: "UPDATE_SUCCESS", payload: res.data });
       toast.success("Profile has been updated");
       setTimeout(() => {
@@ -68,7 +68,7 @@ export default function Settings() {
   const handleDelete = async () => {
     if (window.confirm("Are you sure you want to delete your account?")) {
       try {
-        await axios.delete(`http://localhost:5000/api/users/${user._id}`, { data: { userId: user._id } });
+        await axios.delete(`/api/users/${user._id}`, { data: { userId: user._id } });
         dispatch({ type: "LOGOUT" });
         toast.success("Account has been deleted");
         window.location.replace("/");

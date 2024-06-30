@@ -36,7 +36,7 @@ export default function Write() {
       newPost.photo = filename;
 
       try {
-        await axios.post("http://localhost:5000/api/upload", formData);
+        await axios.post("/api/upload", formData);
         toast.success("Image uploaded successfully");
       } catch (error) {
         console.error("Error uploading file:", error);
@@ -46,7 +46,7 @@ export default function Write() {
     }
 
     try {
-      const res = await axios.post("http://localhost:5000/api/posts", newPost);
+      const res = await axios.post("/api/posts", newPost);
       toast.success("Post published successfully");
       console.log(res.data); // Log response data if needed
       window.location.replace("/post/" + res.data._id);

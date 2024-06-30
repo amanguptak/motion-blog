@@ -1,10 +1,13 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { FaArrowRight } from "react-icons/fa";
+
 import "./post.css";
 
 export default function Post({ post }) {
-  const PF = "http://localhost:5000/images/";
+  
+  const PF = `${import.meta.env.VITE_API_URL}/api/images/`
+
   const maxDescLength = 100;
   const isDescLong = post.desc.split(" ").length > maxDescLength;
   const trimmedDesc = isDescLong

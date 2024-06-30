@@ -22,7 +22,7 @@ export default function SinglePost() {
   const [post, setPost] = useState({});
   const { user } = useContext(Context);
   const [updateMode, setUpdateMode] = useState(false);
-  const PF = "http://localhost:5000/images/";
+const PF = `${import.meta.env.VITE_API_URL}/api/images/`
 
   const { register, handleSubmit, setValue, formState: { errors } } = useForm({
     resolver: zodResolver(schema),
@@ -31,7 +31,7 @@ export default function SinglePost() {
   useEffect(() => {
     const getPost = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/posts/${postId}`);
+        const res = await axios.get(`/api/posts/${postId}`);
         setPost(res.data);
         setValue('title', res.data.title);
         setValue('desc', res.data.desc);
@@ -45,7 +45,7 @@ export default function SinglePost() {
   const handleDelete = async () => {
     if (window.confirm("Are you sure you want to delete this post?")) {
       try {
-        await axios.delete(`http://localhost:5000/api/posts/${postId}`, {
+        await axios.delete(`/api/posts/${postId}`, {
           data: { username: user.username },
         });
         toast.success("Post deleted successfully");
@@ -58,7 +58,7 @@ export default function SinglePost() {
 
   const handleUpdate = async (data) => {
     try {
-      await axios.put(`http://localhost:5000/api/posts/${postId}`, {
+      await axios.put(`/api/posts/${postId}`, {
         username: user.username,
         title: data.title,
         desc: data.desc,

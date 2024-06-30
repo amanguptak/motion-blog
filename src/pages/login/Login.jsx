@@ -26,7 +26,7 @@ export default function Login() {
   const onSubmit = async (data) => {
     dispatch({ type: 'LOGIN_START' });
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', data);
+      const res = await axios.post('/api/auth/login', data);
       dispatch({ type: 'LOGIN_SUCCESS', payload: res.data });
       toast.success('Login successful!');
       navigate('/');  // Redirect to home on successful login

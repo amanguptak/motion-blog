@@ -1,15 +1,8 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Context } from '../../context/Context';
-// import { FaFacebook, FaTwitter, FaInstagram, FaDiscord } from 'react-icons/fa';
+import { FaBars, FaTimes } from 'react-icons/fa';
 import './topbar.css';
-
-// const socialIcons = [
-//   { component: FaFacebook, className: "topIcon" },
-//   { component: FaTwitter, className: "topIcon" },
-//   { component: FaInstagram, className: "topIcon" },
-//   { component: FaDiscord, className: "topIcon" }
-// ];
 
 const navLinks = [
   { path: "/", label: "Home" },
@@ -22,13 +15,14 @@ export default function TopBar() {
   const { user, dispatch } = useContext(Context);
   const navigate = useNavigate();
   const location = useLocation();
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleLogout = () => {
     dispatch({ type: 'LOGOUT' });
     navigate('/login'); // Redirect to login page upon logout
   };
 
-  const PF = 'http://localhost:5000/images/';
+  const PF = 'http://3.109.108.130/api/images/';
 
   // Check if the current path is login or register
   if (location.pathname === '/login' || location.pathname === '/register') {
@@ -38,7 +32,7 @@ export default function TopBar() {
   return (
     <div className="top">
       <div className="topLeft">
-       <h3><Link to="/">motionBlog</Link></h3>
+        <h3><Link to="/">motionBlog</Link></h3>
       </div>
       <div className="topCenter">
         <ul className="toplist">
@@ -47,16 +41,15 @@ export default function TopBar() {
               <Link to={link.path} className="link">{link.label}</Link>
             </li>
           ))}
-          
         </ul>
       </div>
       <div className="topRight">
         {user ? (
           <div className='user-options'>
-          <Link to="/settings">
-            <img src={PF + user.profilePic} alt="" className="topImg" />
-          </Link>
-             <button className="link" onClick={handleLogout}>LogOut</button>
+            <Link to="/settings">
+              <img src={PF + user.profilePic} alt="" className="topImg" />
+            </Link>
+            <button className="link" onClick={handleLogout}>LogOut</button>
           </div>
         ) : (
           <ul className="toplist">
@@ -68,6 +61,18 @@ export default function TopBar() {
             </li>
           </ul>
         )}
+      </div>
+      <div className="burgerIcon" onClick={() => setIsOpen(!isOpen)}>
+        {isOpen ? <FaTimes /> : <FaBars />}
+      </div>
+      <div className={`sidebar ${isOpen ? 'open' : ''}`}>
+        <ul className="sidebarList">
+          {navLinks.map((link, index) => (
+            <li className="sidebarListItem" key={index}>
+              <Link to={link.path} className="link" onClick={() => setIsOpen(false)}>{link.label}</Link>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );
