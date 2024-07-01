@@ -19,8 +19,7 @@ export default function Categories() {
   const handleCategoryClick = (catName) => {
     navigate(`/?cat=${catName}`);
     if (window.innerWidth < 768) {
-      window.scrollTo(0, 0);
-    }
+      window.scrollTo({ top: 0, behavior: 'smooth' });}
   };
 
   return (
