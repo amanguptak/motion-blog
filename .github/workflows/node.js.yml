@@ -32,5 +32,5 @@ jobs:
       run: |
         echo "${{ secrets.EC2_KEY }}" > key.pem
         chmod 400 key.pem
-        scp -o StrictHostKeyChecking=no -r dist/* ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:/var/www/html
+        scp -o StrictHostKeyChecking=no -i key.pem -r dist/* ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:/var/www/html
         ssh -o StrictHostKeyChecking=no -i key.pem ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} 'sudo systemctl restart nginx'
