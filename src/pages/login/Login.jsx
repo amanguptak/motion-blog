@@ -28,7 +28,8 @@ export default function Login() {
     dispatch({ type: 'LOGIN_START' });
     try {
       const res = await axios.post('/api/auth/login', data);
-      dispatch({ type: 'LOGIN_SUCCESS', payload: res.data });
+      dispatch({ type: 'LOGIN_SUCCESS', payload: res.data?.user});
+      console.log(res.data, "username");
       toast.success('Login successful!');
       navigate('/');  // Redirect to home on successful login
     } catch (err) {

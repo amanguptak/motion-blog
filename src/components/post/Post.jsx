@@ -7,7 +7,8 @@ import "./post.css";
 export default function Post({ post }) {
   
   const PF = `${import.meta.env.VITE_API_URL}/api/images/`
-
+  
+  console.log(post,"checking post")
   const maxDescLength = 100;
   const isDescLong = post.desc.split(" ").length > maxDescLength;
   const trimmedDesc = isDescLong
@@ -36,10 +37,10 @@ export default function Post({ post }) {
         </span>
       </div>
       <div className="postDescWrapper">
-        <div
+        <p
           className="postDesc"
           dangerouslySetInnerHTML={{ __html: trimmedDesc }}
-        ></div>
+        ></p>
         {isDescLong && (
           <Link to={`/post/${post._id}`} className="readMore">
             Read More <FaArrowRight />

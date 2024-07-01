@@ -112,7 +112,7 @@
 }
 
 .singlePostDesc {
-  font-size: 1.2rem;
+  
   line-height: 1.6;
   color: #ffdb70;
   margin-bottom: 20px;
@@ -197,4 +197,28 @@
   .singlePostDescInput {
     min-height: 100px;
   }
+}
+.backButton {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #ffdb70;
+  color: #21476b;
+  border: none;
+  border-radius: 30px;
+  
+  padding: 10px 15px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  margin-bottom: 20px;
+}
+
+.backButton:hover {
+  background-color: #21476b;
+  color: #ffdb70;
+}
+
+.backButton svg {
+  font-size: 1.2rem;
 }

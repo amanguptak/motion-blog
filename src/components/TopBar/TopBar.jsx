@@ -21,7 +21,7 @@ export default function TopBar() {
     dispatch({ type: 'LOGOUT' });
     navigate('/login'); // Redirect to login page upon logout
   };
-
+ 
   const PF = `${import.meta.env.VITE_API_URL}/api/images/`;
 
   // Check if the current path is login or register

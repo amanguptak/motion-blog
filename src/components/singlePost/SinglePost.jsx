@@ -1,12 +1,12 @@
 import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Context } from '../../context/Context';
 import { toast, ToastContainer } from 'react-toastify';
-import { FaEdit, FaTrash, FaFileImage } from 'react-icons/fa';
+import { FaEdit, FaTrash, FaFileImage, FaArrowLeft } from 'react-icons/fa';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import 'react-toastify/dist/ReactToastify.css';
@@ -24,6 +24,7 @@ export default function SinglePost() {
   const [updateMode, setUpdateMode] = useState(false);
   const [file, setFile] = useState(null);
   const PF = `${import.meta.env.VITE_API_URL}/api/images/`;
+  const navigate = useNavigate();
 
   const { register, handleSubmit, setValue, formState: { errors } } = useForm({
     resolver: zodResolver(schema),
@@ -95,6 +96,9 @@ export default function SinglePost() {
     <div className="singlePost">
       <ToastContainer />
       <div className="singlePostWrapper">
+        <button className="backButton" onClick={() => navigate(-1)}>
+          <FaArrowLeft />
+        </button>
         {post.photo && !file && (
           <img src={PF + post.photo} alt={post.title} className="singlePostImg" />
         )}

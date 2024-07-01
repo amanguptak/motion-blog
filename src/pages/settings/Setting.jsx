@@ -20,7 +20,7 @@ const schema = z.object({
 export default function Settings() {
   const [file, setFile] = useState(null);
   const { user, dispatch } = useContext(Context);
-const PF = `${import.meta.env.VITE_API_URL}/api/images/`
+  const PF = `${import.meta.env.VITE_API_URL}/api/images/`;
   const navigate = useNavigate();
 
   const { register, handleSubmit, setValue, formState: { errors } } = useForm({
@@ -28,9 +28,11 @@ const PF = `${import.meta.env.VITE_API_URL}/api/images/`
   });
 
   useEffect(() => {
-    setValue('username', user.username);
-    setValue('email', user.email);
-  }, [setValue, user.username, user.email]);
+    if (user) {
+      setValue('username', user.username);
+      setValue('email', user.email);
+    }
+  }, [setValue, user]);
 
   const onSubmit = async (data) => {
     dispatch({ type: "UPDATE_START" });
@@ -53,7 +55,7 @@ const PF = `${import.meta.env.VITE_API_URL}/api/images/`
       }
     }
     try {
-      const res = await axios.put("/api/users/" + user._id, updatedUser);
+      const res = await axios.put(`/api/users/${user._id}`, updatedUser);
       dispatch({ type: "UPDATE_SUCCESS", payload: res.data });
       toast.success("Profile has been updated");
       setTimeout(() => {
