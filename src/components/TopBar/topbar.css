@@ -1,5 +1,3 @@
-/* topbar.css */
-
 .top {
   width: 100%;
   height: 60px;
@@ -17,7 +15,6 @@
 .topLeft,
 .topCenter,
 .topRight {
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -121,58 +118,82 @@
   color: #ffdb70; /* Updated icon color */
 }
 
-.sidebar{
+.sidebar {
   display: none;
 }
 
 /* Responsive styles */
 @media (max-width: 768px) {
   .toplist {
-      display: none;
+    display: none;
   }
 
   .burgerIcon {
-      display: block;
+    display: block;
   }
 
   .sidebar {
-      position: fixed;
-      top: 0;
-      left: -100%;
-      width: 250px;
-      height: 100%;
-      background-color: #21476b;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      transition: left 0.3s ease-in-out;
-      z-index: 1000;
-     
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 250px;
+    height: 100%;
+    background-color: #21476b;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    transition: left 0.3s ease-in-out;
+    z-index: 1000;
   }
 
   .sidebar.open {
-      left: 0;
+    left: 0;
   }
 
   .sidebarList {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      width: 100%;
-      text-align: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+    
+    margin-top: 50px;
   }
 
   .sidebarListItem {
-      margin: 20px 0;
-      font-size: 18px;
-      font-weight: 500;
-      cursor: pointer;
-      color: #ffdb70; /* Updated text color */
-      transition: color 0.3s;
+    margin: 20px 0;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    color: #ffdb70; /* Updated text color */
+    transition: color 0.3s;
   }
 
   .sidebarListItem:hover {
-      color: #ffd54f; /* Hover effect for list items */
+    color: #ffd54f; /* Hover effect for list items */
+  }
+
+  .mobileAuthIcons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 20px;
+    padding-bottom: 20px;
+    margin: 20px;
+  }
+
+  .mobileLink {
+    font-size: 24px;
+    display: flex;
+    
+    color: #ffdb70; /* Updated icon color */
+    gap: 20px;
+    transition: color 0.3s;
+  }
+
+  .mobileLink:hover {
+    color: #ffd54f; /* Hover effect for icons */
   }
 }

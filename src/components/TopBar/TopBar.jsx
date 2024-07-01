@@ -1,9 +1,10 @@
 import { useContext, useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Context } from '../../context/Context';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { FaBars, FaTimes, FaSignInAlt, FaUserPlus } from 'react-icons/fa';
 import './topbar.css';
 import axios from 'axios';
+
 const navLinks = [
   { path: "/", label: "Home" },
   { path: "/about", label: "About" },
@@ -71,7 +72,6 @@ export default function TopBar() {
       </div>
     
       <div className={`sidebar ${isOpen ? 'open' : ''}`}>
-       
         <ul className="sidebarList">
           {navLinks.map((link, index) => (
             <li className="sidebarListItem" key={index}>
@@ -79,6 +79,16 @@ export default function TopBar() {
             </li>
           ))}
         </ul>
+        {!user && (
+          <div className="mobileAuthIcons">
+            <Link className="mobileLink" to="/login" onClick={() => setIsOpen(false)}>
+              <FaSignInAlt /> LOGIN
+            </Link>
+            <Link className="mobileLink" to="/register" onClick={() => setIsOpen(false)}>
+              <FaUserPlus /> REGISTER
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );
