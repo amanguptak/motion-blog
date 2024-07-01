@@ -22,7 +22,7 @@ export default function TopBar() {
     navigate('/login'); // Redirect to login page upon logout
   };
 
-  const PF = 'http://3.109.108.130/api/images/';
+  const PF = `${import.meta.env.VITE_API_URL}/api/images/`;
 
   // Check if the current path is login or register
   if (location.pathname === '/login' || location.pathname === '/register') {
