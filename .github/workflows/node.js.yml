@@ -16,7 +16,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '16'
+        node-version: '20'
 
     - name: Install dependencies
       run: npm install
@@ -30,7 +30,7 @@ jobs:
         EC2_USER: ${{ secrets.EC2_USER }}
         EC2_KEY: ${{ secrets.EC2_KEY }}
       run: |
-        echo "$EC2_KEY" > key.pem
+        echo "${{ secrets.EC2_KEY }}" > key.pem
         chmod 400 key.pem
-        scp -o StrictHostKeyChecking=no -r dist/* $EC2_USER@$EC2_HOST:/var/www/html
-        ssh -o StrictHostKeyChecking=no -i key.pem $EC2_USER@$EC2_HOST 'sudo systemctl restart nginx'
+        scp -o StrictHostKeyChecking=no -r dist/* ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:/var/www/html
+        ssh -o StrictHostKeyChecking=no -i key.pem ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} 'sudo systemctl restart nginx'
