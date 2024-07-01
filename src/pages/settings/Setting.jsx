@@ -1,5 +1,5 @@
 import "./setting.css";
-import Sidebar from "../../components/sidebar/Categories";
+
 import { useContext, useState, useEffect } from "react";
 import { Context } from "../../context/Context";
 import axios from "axios";
@@ -114,7 +114,7 @@ export default function Settings() {
           <button className="settingsSubmitButton" type="submit">Update</button>
         </form>
       </div>
-      <Sidebar />
+      {/* <Sidebar /> */}
     </div>
   );
 }
