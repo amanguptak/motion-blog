@@ -1,11 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import {  FaTwitter, FaInstagram, FaDiscord, FaUserCircle } from 'react-icons/fa';
+import { Link, useNavigate } from "react-router-dom";
+import { FaTwitter, FaInstagram, FaDiscord, FaUserCircle } from 'react-icons/fa';
 import "./categories.css";
 
 export default function Categories() {
   const [cats, setCats] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getCats = async () => {
@@ -14,6 +15,11 @@ export default function Categories() {
     };
     getCats();
   }, []);
+
+  const handleCategoryClick = (catName) => {
+    navigate(`/?cat=${catName}`);
+    window.scrollTo(0, 0);
+  };
 
   return (
     <div className="categories">
@@ -26,9 +32,13 @@ export default function Categories() {
         <h3 className="sectionTitle">Categories</h3>
         <ul className="categoriesList">
           {cats?.map((c) => (
-            <Link to={`/?cat=${c?.name}`} key={c._id} className="link">
-              <li className="categoriesListItem">{c.name}</li>
-            </Link>
+            <li
+              key={c._id}
+              className="categoriesListItem"
+              onClick={() => handleCategoryClick(c.name)}
+            >
+              {c.name}
+            </li>
           ))}
         </ul>
       </div>
@@ -36,11 +46,9 @@ export default function Categories() {
       <div className="socialMedia">
         <h3 className="sectionTitle">Follow Us</h3>
         <div className="socialIcons">
-         
           <FaTwitter className="icon" />
           <FaInstagram className="icon" />
           <FaDiscord className="icon" />
-       
           <Link to="https://amangupta.site"><FaUserCircle className="icon" /></Link>
         </div>
       </div>
