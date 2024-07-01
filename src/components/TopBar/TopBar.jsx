@@ -3,7 +3,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { Context } from '../../context/Context';
 import { FaBars, FaTimes } from 'react-icons/fa';
 import './topbar.css';
-
+import axios from 'axios';
 const navLinks = [
   { path: "/", label: "Home" },
   { path: "/about", label: "About" },
@@ -17,11 +17,15 @@ export default function TopBar() {
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleLogout = () => {
-    dispatch({ type: 'LOGOUT' });
-    navigate('/login'); // Redirect to login page upon logout
+  const handleLogout = async () => {
+    try {
+      await axios.post('/api/auth/logout');
+      dispatch({ type: 'LOGOUT' });
+      navigate('/login'); // Redirect to login page upon logout
+    } catch (error) {
+      console.error('Logout failed:', error);
+    }
   };
- 
   const PF = `${import.meta.env.VITE_API_URL}/api/images/`;
 
   // Check if the current path is login or register

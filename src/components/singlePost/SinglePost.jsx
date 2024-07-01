@@ -159,7 +159,7 @@ export default function SinglePost() {
                 {new Date(post.createdAt).toDateString()}
               </span>
             </div>
-            <p className="singlePostDesc" dangerouslySetInnerHTML={{ __html: post.desc }}></p>
+            <div className="singlePostDesc" dangerouslySetInnerHTML={{ __html: post.desc }}></div>
           </>
         )}
       </div>

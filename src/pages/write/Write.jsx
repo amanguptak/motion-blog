@@ -46,7 +46,7 @@ export default function Write() {
     }
 
     try {
-      const res = await axios.post("/api/posts", newPost,{ withCredentials: true });
+      const res = await axios.post("/api/posts", newPost);
       toast.success("Post published successfully");
       console.log(res.data); // Log response data if needed
       window.location.replace("/post/" + res.data._id);
