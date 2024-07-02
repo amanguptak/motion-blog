@@ -1,5 +1,8 @@
 import axios from 'axios';
 import { useContext, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
 import { Context } from '../../context/Context';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -8,24 +11,29 @@ import 'react-toastify/dist/ReactToastify.css';
 import { FaFileImage } from 'react-icons/fa';
 import './write.css';
 
+const schema = z.object({
+  title: z.string().min(1, "Title is required"),
+  desc: z.string().min(1, "Description is required"),
+  categories: z.string().min(1, "Categories are required")
+});
+
 export default function Write() {
   const { user } = useContext(Context);
-  const [title, setTitle] = useState("");
   const [file, setFile] = useState(null);
-  const [des, setDes] = useState("");
-  const [categories, setCategories] = useState(""); // State for categories
+  const { register, handleSubmit, setValue, formState: { errors } } = useForm({
+    resolver: zodResolver(schema)
+  });
 
   const handleFileChange = (e) => {
     setFile(e.target.files[0]);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const onSubmit = async (data) => {
     const newPost = {
       username: user.username,
-      title,
-      desc: des,
-      categories: categories?.split(",")?.map(cat => cat.trim()), // Split and trim categories input
+      title: data.title,
+      desc: data.desc,
+      categories: data.categories.split(",").map(cat => cat.trim())
     };
 
     if (file) {
@@ -61,7 +69,7 @@ export default function Write() {
       <ToastContainer />
       {file && <img src={URL.createObjectURL(file)} className="writeImg" alt="Preview" />}
 
-      <form className="writeForm" onSubmit={handleSubmit}>
+      <form className="writeForm" onSubmit={handleSubmit(onSubmit)}>
         <div className="writeFormGroup">
           <label htmlFor="fileInput">
             <FaFileImage className="fileIcon" />
@@ -77,19 +85,19 @@ export default function Write() {
             placeholder="Title"
             className="writeInput"
             autoFocus={true}
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            {...register("title")}
           />
+          {errors.title && <p className="error">{errors.title.message}</p>}
         </div>
 
         <div className="writeFormGroup">
           <ReactQuill
             theme="snow"
-            value={des}
-            onChange={setDes}
+            onChange={(value) => setValue("desc", value)}
             placeholder="Tell Your Story..."
             className="writeTextEditor"
           />
+          {errors.desc && <p className="error">{errors.desc.message}</p>}
         </div>
 
         <div className="writeFormGroup">
@@ -97,9 +105,9 @@ export default function Write() {
             type="text"
             placeholder="Categories (comma separated)"
             className="writeInput"
-            value={categories}
-            onChange={(e) => setCategories(e.target.value)}
+            {...register("categories")}
           />
+          {errors.categories && <p className="error">{errors.categories.message}</p>}
         </div>
 
         <button className="writeSubmit" type="submit">Publish</button>

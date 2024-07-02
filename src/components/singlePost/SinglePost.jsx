@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useContext, useEffect, useState } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, Link, useNavigate, useLocation } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -25,6 +25,7 @@ export default function SinglePost() {
   const [file, setFile] = useState(null);
   const PF = `${import.meta.env.VITE_API_URL}/api/images/`;
   const navigate = useNavigate();
+  const location = useLocation();
 
   const { register, handleSubmit, setValue, formState: { errors } } = useForm({
     resolver: zodResolver(schema),
@@ -96,7 +97,7 @@ export default function SinglePost() {
     <div className="singlePost">
       <ToastContainer />
       <div className="singlePostWrapper">
-        <button className="backButton" onClick={() => navigate(-1)}>
+        <button className="backButton" onClick={() => navigate(location.state?.from || '/')}>
           <FaArrowLeft />
         </button>
         {post.photo && !file && (

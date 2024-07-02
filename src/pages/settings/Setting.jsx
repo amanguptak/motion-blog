@@ -101,7 +101,7 @@ export default function Settings() {
           </div>
           <label className="settingLabel">Username</label>
           <input className="settingsInput" type="text" {...register('username')} />
-          {errors.username && <span className="errorMessage">{errors.username.message}</span>}
+          {errors.username && <span className="errorMessage">{errors.username?.message}</span>}
           
           <label className="settingLabel">Email</label>
           <input className="settingsInput" type="email" {...register('email')} />
