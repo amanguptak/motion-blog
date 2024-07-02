@@ -1,9 +1,10 @@
-import axios from 'axios';
+// SinglePost.js
 import { useContext, useEffect, useState } from 'react';
 import { useParams, Link, useNavigate, useLocation } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
+import axios from 'axios';
 import { Context } from '../../context/Context';
 import { toast, ToastContainer } from 'react-toastify';
 import { FaEdit, FaTrash, FaFileImage, FaArrowLeft } from 'react-icons/fa';
@@ -11,6 +12,7 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import 'react-toastify/dist/ReactToastify.css';
 import './singlepost.css';
+import CustomDialog from '../Dialog/Dialog';
 
 const schema = z.object({
   title: z.string().min(1, 'Title is required'),
@@ -26,6 +28,7 @@ export default function SinglePost() {
   const PF = `${import.meta.env.VITE_API_URL}/api/images/`;
   const navigate = useNavigate();
   const location = useLocation();
+  const [showDialog, setShowDialog] = useState(false);
 
   const { register, handleSubmit, setValue, formState: { errors } } = useForm({
     resolver: zodResolver(schema),
@@ -46,16 +49,14 @@ export default function SinglePost() {
   }, [postId, setValue]);
 
   const handleDelete = async () => {
-    if (window.confirm("Are you sure you want to delete this post?")) {
-      try {
-        await axios.delete(`/api/posts/${postId}`, {
-          data: { username: user.username },
-        });
-        toast.success("Post deleted successfully");
-        window.location.replace('/');
-      } catch (err) {
-        toast.error("Failed to delete post");
-      }
+    try {
+      await axios.delete(`/api/posts/${postId}`, {
+        data: { username: user.username },
+      });
+      toast.success("Post deleted successfully");
+      window.location.replace('/');
+    } catch (err) {
+      toast.error("Failed to delete post");
     }
   };
 
@@ -93,9 +94,24 @@ export default function SinglePost() {
     }
   };
 
+  const openDialog = () => {
+    setShowDialog(true);
+  };
+
+  const closeDialog = () => {
+    setShowDialog(false);
+  };
+
   return (
     <div className="singlePost">
       <ToastContainer />
+      {showDialog && (
+        <CustomDialog 
+          message="Are you sure you want to delete this post?" 
+          onConfirm={handleDelete} 
+          onCancel={closeDialog} 
+        />
+      )}
       <div className="singlePostWrapper">
         <button className="backButton" onClick={() => navigate(location.state?.from || '/')}>
           <FaArrowLeft />
@@ -145,7 +161,7 @@ export default function SinglePost() {
               {post.username === user?.username && (
                 <div className="singlePostEdit">
                   <FaEdit className="singlePostIcon" onClick={() => setUpdateMode(true)} />
-                  <FaTrash className="singlePostIcon" onClick={handleDelete} />
+                  <FaTrash className="singlePostIcon" onClick={openDialog} />
                 </div>
               )}
             </h1>

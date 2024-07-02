@@ -8,7 +8,7 @@ export default function Post({ post }) {
   
   const PF = `${import.meta.env.VITE_API_URL}/api/images/`
   
-  console.log(post,"checking post")
+
   const maxDescLength = 100;
   const isDescLong = post.desc.split(" ").length > maxDescLength;
   const trimmedDesc = isDescLong

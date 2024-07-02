@@ -9,7 +9,7 @@ export default function Header() {
           <span className="slogan">Your daily dose of amazing stories</span>
         </div>
         <img 
-          src="https://yakult.com.mt/wp-content/uploads//2017/01/GIAPPONE1400X600.jpg" 
+          src="/mtfuji.jpg" 
           alt="Header Background" 
           className="headerImg" 
         />
