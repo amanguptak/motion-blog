@@ -21,10 +21,10 @@
 
     
   }
-  .dialogBox p,h2{
+  /* .message p,h2{
     text-align: start;
    
-  }
+  } */
   .dialogButtons {
     display: flex;
     justify-content: space-between;

@@ -8,8 +8,10 @@ const CustomDialog = ({ message, onConfirm, onCancel }) => {
     <div className="dialogOverlay">
       <div className="dialogBox">
         <FaExclamationTriangle className="warningIcon" />
-        <h2>Warning</h2>
-        <p>{message}</p>
+       <div className='message'>
+       <h2>Warning</h2>
+       <p>{message}</p>
+       </div>
         <div className="dialogButtons">
           <button className="cancelButton" onClick={onCancel}>
             Cancel
